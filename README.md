@@ -27,13 +27,6 @@ GG #vim command to go to bottom of file
 o #vim comnmand to add new line
 alias wakeup="/usr/local/bin"
 :wq #vim command to save file and exit from vim
-Syntax: wakeup <hh:mm> [option]
-
-options:
---help      : Print this Help.
--n      : Set wakeup time the next day.
--h [hours]  : Set wakeup time after [hours].
--m [minutes]    : Set wakeup time after [minutes].
 source .bashrc
 ```
 
