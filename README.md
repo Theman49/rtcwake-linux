@@ -36,7 +36,7 @@ check what are folders in path
 ```
 echo $PATH
 ```
-> /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:/usr/games:/sbin:/home/theman49/bin
+> /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:/usr/games:/sbin:/home/YOURPROFILE/bin
 
 ```
 sudo cp wakeup /usr/local/sbin
