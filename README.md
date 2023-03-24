@@ -1,6 +1,55 @@
 # rtcwake-linux
 Program for autowakeup in linux when laptop is power off
 
+# requirement
+## rtcwake
+
+Based on Ubuntu/Debian
+> apt-get install util-linux
+
+Alpine
+> apk add util-linux
+
+Based on Manjaro/Arch
+> pacman -S util-linux
+
+CentOS
+> yum install util-linux
+
+based on Fedora/Red Hat
+> dnf install util-linux
+
+Windows (WSL2)
+> sudo apt-get update sudo apt-get install util-linux
+
+MacOS (OS X)
+> brew install util-linux
+
+Raspbian
+> apt-get install util-linux
+
+## notify-send (optional)
+based on Ubuntu/Debian  
+> apt-get install libnotify-bin
+
+Alpine  
+> apk add libnotify
+
+based on Manjaro/Arch  
+> pacman -S libnotify
+
+CentOS  
+> yum install libnotify
+
+base on Fedora/Red Hat  
+> dnf install libnotify
+
+Mac (OS X)    
+> brew install libnotify
+
+Raspbian    
+> apt-get install libnotify-bin
+
 # How to use
 ```
 git clone https://github.com/Theman49/rtcwake-linux.git
