@@ -26,8 +26,17 @@ vim .bashrc
 GG #vim command to go to bottom of file
 o #vim comnmand to add new line
 alias wakeup="/usr/local/bin"
+:wq #vim command to save file and exit from vim
+Syntax: wakeup <hh:mm> [option]
 
+options:
+--help      : Print this Help.
+-n      : Set wakeup time the next day.
+-h [hours]  : Set wakeup time after [hours].
+-m [minutes]    : Set wakeup time after [minutes].
+source .bashrc
 ```
+
 
 ## Option 2: copy script 'wakeup' to folder that exist on path
 check what are folders in path
@@ -40,3 +49,13 @@ echo $PATH
 sudo cp wakeup /usr/local/sbin
 ```
 
+# Run
+```
+Syntax: wakeup <hh:mm> [option]
+
+options:
+--help      : Print this Help.
+-n      : Set wakeup time the next day.
+-h [hours]  : Set wakeup time after [hours].
+-m [minutes]    : Set wakeup time after [minutes].
+```
