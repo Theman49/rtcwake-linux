@@ -1,0 +1,46 @@
+#!/bin/bash 
+Help()
+{
+   # Display Help
+   echo "wakeup laptop automatic when turn off v1"
+   echo "========================================="
+   echo
+   echo "Syntax: wakeup <hh:mm> [option]"
+   echo "options:"
+   echo "--help		: Print this Help."
+   echo "-n    		: Set wakeup time the next day."
+   echo "-h [hours]   	: Set wakeup time after [hours]."
+   echo "-m [minutes]   : Set wakeup time after [minutes]."
+   echo
+}
+
+if [ -z $1 ]
+then
+	timestamp="$(date '+%s' --date='tomorrow')"
+else
+	if [ $1 == "--help" ]
+	then
+		Help
+		exit 0;
+	fi
+
+	clock="$1 today"
+	while getopts "nh:m:" option;
+	  do
+	    case $option in
+	      n)
+		clock="$1 next day"
+		;;
+	      h)
+		clock="+$OPTARG hours"
+		;;
+	      m)
+		clock="+$OPTARG minutes"
+		;;
+	    esac
+	  done
+	timestamp="$(date '+%s' --date="$clock")"
+fi
+notify-send "run alarm on $(date --date=@$timestamp)"
+rtcwake -l -m on --time $timestamp
+
