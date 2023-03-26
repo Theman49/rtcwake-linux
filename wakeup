@@ -4,15 +4,18 @@ Help()
    # Display Help
    echo "wakeup laptop automatic when turn off v1"
    echo "========================================="
-   echo
+   echo ""
    echo "Syntax: wakeup <hh:mm> [option]"
+   echo ""
    echo "options:"
    echo "--help		: Print this Help."
-   echo "-n    		: Set wakeup time the next day."
-   echo "-h [hours]   	: Set wakeup time after [hours]."
-   echo "-m [minutes]   : Set wakeup time after [minutes]."
-   echo
+   echo "-s		: Set shutdown too in 70s"
+   echo "-n		: Set wakeup time the next day."
+   echo "-h [hours]	: Set wakeup time after [hours]."
+   echo "-m [minutes]	: Set wakeup time after [minutes]."
 }
+
+isShutdown=0
 
 if [ -z $1 ]
 then
@@ -25,7 +28,7 @@ else
 	fi
 
 	clock="$1 today"
-	while getopts "nh:m:" option;
+	while getopts "nh:m:s" option;
 	  do
 	    case $option in
 	      n)
@@ -37,10 +40,18 @@ else
 	      m)
 		clock="+$OPTARG minutes"
 		;;
+	      s)
+		isShutdown=1
+		;;
 	    esac
 	  done
 	timestamp="$(date '+%s' --date="$clock")"
 fi
-notify-send "run alarm on $(date --date=@$timestamp)"
-rtcwake -l -m on --time $timestamp
 
+#notify-send "run alarm on $(date --date=@$timestamp)"
+rtcwake -l -m no --time $timestamp
+
+if [ $isShutdown == 1 ]
+then
+	shutdown -h -t 10
+fi
